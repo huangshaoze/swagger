@@ -1,0 +1,2711 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "OCP基础系统管理接口",
+    "description": "OCP基础系统管理接口",
+    "version": "1.0.0"
+  },
+  "host": "localhost",
+  "schemes": [
+    "http"
+  ],
+  "basePath": "/base/v1",
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/dept": {
+      "post": {
+        "summary": "创建机构。",
+        "description": "创建机构。",
+        "parameters": [
+          {
+            "name": "deptDto",
+            "in": "body",
+            "description": "机构信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/deptDto"
+            }
+          }
+        ],
+        "tags": [
+          "dept"
+        ],
+        "responses": {
+          "200": {
+            "description": "创建机构成功",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "创建机构失败",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/dept/list": {
+      "get": {
+        "summary": "获取机构列表。",
+        "description": "获取机构列表。",
+        "tags": [
+          "dept"
+        ],
+        "responses": {
+          "200": {
+            "description": "获取机构列表成功",
+            "schema": {
+              "$ref": "#/definitions/deptItems"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "获取机构列表失败",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/dept/status/{id}/{statusValue}": {
+      "put": {
+        "summary": "修改机构状态。",
+        "description": "修改机构状态。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "机构ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "statusValue",
+            "in": "path",
+            "description": "状态值(0：禁用，1：启用)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "dept"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的机构信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/dept/{id}": {
+      "get": {
+        "summary": "获取单个机构信息。",
+        "description": "获取单个机构信息。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "机构ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "dept"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/deptResult"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的机构信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "修改单个机构信息。",
+        "description": "修改单个机构信息。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "机构ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "deptDto",
+            "in": "body",
+            "description": "机构信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/deptDto"
+            }
+          }
+        ],
+        "tags": [
+          "dept"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的机构信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "删除单个机构。",
+        "description": "删除单个机构。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "机构ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "dept"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的机构信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/user": {
+      "post": {
+        "summary": "创建用户。",
+        "description": "创建用户。",
+        "parameters": [
+          {
+            "name": "userDto",
+            "in": "body",
+            "description": "用户信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/userDto"
+            }
+          }
+        ],
+        "tags": [
+          "user"
+        ],
+        "responses": {
+          "200": {
+            "description": "创建用户成功",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "创建用户失败",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/user/list": {
+      "post": {
+        "summary": "获取用户列表。",
+        "description": "获取用户列表。",
+        "parameters": [
+          {
+            "$ref": "#/parameters/pageSize"
+          },
+          {
+            "$ref": "#/parameters/pageNum"
+          },
+          {
+            "name": "userDto",
+            "in": "body",
+            "description": "资源信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/userDto"
+            }
+          }
+        ],
+        "tags": [
+          "user"
+        ],
+        "responses": {
+          "200": {
+            "description": "获取用户列表成功",
+            "schema": {
+              "$ref": "#/definitions/userItems"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "获取用户列表失败",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/user/status/{id}/{statusValue}": {
+      "put": {
+        "summary": "修改用户状态。",
+        "description": "修改用户状态。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "用户ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "statusValue",
+            "in": "path",
+            "description": "状态值(0：禁用，1：启用)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "user"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的用户信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/user/{id}": {
+      "get": {
+        "summary": "获取单个用户信息。",
+        "description": "获取单个用户信息。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "用户ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "user"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/userResult"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的用户信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "修改单个用户信息。",
+        "description": "修改单个用户信息。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "用户ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userDto",
+            "in": "body",
+            "description": "用户信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/userDto"
+            }
+          }
+        ],
+        "tags": [
+          "user"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的用户信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "删除单个用户。",
+        "description": "删除单个用户。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "用户ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "user"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的用户信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/role": {
+      "post": {
+        "summary": "创建角色。",
+        "description": "创建角色。",
+        "parameters": [
+          {
+            "name": "roleDto",
+            "in": "body",
+            "description": "角色信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/roleDto"
+            }
+          }
+        ],
+        "tags": [
+          "role"
+        ],
+        "responses": {
+          "200": {
+            "description": "创建角色成功",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "创建角色失败",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/role/list": {
+      "post": {
+        "summary": "获取角色列表。",
+        "description": "获取角色列表。",
+        "parameters": [
+          {
+            "$ref": "#/parameters/pageSize"
+          },
+          {
+            "$ref": "#/parameters/pageNum"
+          },
+          {
+            "name": "roleDto",
+            "in": "body",
+            "description": "角色信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/roleDto"
+            }
+          }
+        ],
+        "tags": [
+          "role"
+        ],
+        "responses": {
+          "200": {
+            "description": "获取角色列表成功",
+            "schema": {
+              "$ref": "#/definitions/roleItems"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "获取角色列表失败",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/role/status/{id}/{statusValue}": {
+      "put": {
+        "summary": "修改角色状态。",
+        "description": "修改角色状态。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "角色ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "statusValue",
+            "in": "path",
+            "description": "状态值(0：禁用，1：启用)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "role"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的角色信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/role/{id}": {
+      "get": {
+        "summary": "获取单个角色信息。",
+        "description": "获取单个角色信息。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "角色ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "role"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/roleResult"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的角色信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "修改单个角色信息。",
+        "description": "修改单个角色信息。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "角色ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "roleDto",
+            "in": "body",
+            "description": "角色信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/roleDto"
+            }
+          }
+        ],
+        "tags": [
+          "role"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的角色信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "删除单个角色。",
+        "description": "删除单个角色。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "角色ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "role"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的角色信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/menu": {
+      "post": {
+        "summary": "创建菜单。",
+        "description": "创建菜单。",
+        "parameters": [
+          {
+            "name": "menuDto",
+            "in": "body",
+            "description": "菜单信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/menuDto"
+            }
+          }
+        ],
+        "tags": [
+          "menu"
+        ],
+        "responses": {
+          "200": {
+            "description": "创建菜单成功",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "创建菜单失败",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/menu/list": {
+      "get": {
+        "summary": "获取菜单列表。",
+        "description": "获取菜单列表。",
+        "tags": [
+          "menu"
+        ],
+        "responses": {
+          "200": {
+            "description": "获取菜单列表成功",
+            "schema": {
+              "$ref": "#/definitions/menuItems"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "获取菜单列表失败",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/menu/status/{id}/{statusValue}": {
+      "put": {
+        "summary": "修改菜单状态。",
+        "description": "修改菜单状态。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "菜单ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "statusValue",
+            "in": "path",
+            "description": "状态值(0：禁用，1：启用)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "menu"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的菜单信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/menu/{id}": {
+      "get": {
+        "summary": "获取单个菜单信息。",
+        "description": "获取单个菜单信息。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "菜单ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "menu"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/menuResult"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的菜单信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "修改单个菜单信息。",
+        "description": "修改单个菜单信息。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "菜单ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "menuDto",
+            "in": "body",
+            "description": "菜单信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/menuDto"
+            }
+          }
+        ],
+        "tags": [
+          "menu"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的菜单信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "删除单个菜单。",
+        "description": "删除单个菜单。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "菜单ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "menu"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的菜单信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/resource": {
+      "post": {
+        "summary": "创建资源。",
+        "description": "创建资源。",
+        "parameters": [
+          {
+            "name": "resourceDto",
+            "in": "body",
+            "description": "资源信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/resourceDto"
+            }
+          }
+        ],
+        "tags": [
+          "resource"
+        ],
+        "responses": {
+          "200": {
+            "description": "创建资源成功",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "创建资源失败",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/resource/list": {
+      "get": {
+        "summary": "获取资源列表。",
+        "description": "获取资源列表。",
+        "parameters": [
+          {
+            "name": "menuId",
+            "in": "query",
+            "type": "string",
+            "description": "菜单ID",
+            "required": true
+          }
+        ],
+        "tags": [
+          "resource"
+        ],
+        "responses": {
+          "200": {
+            "description": "获取资源列表成功",
+            "schema": {
+              "$ref": "#/definitions/resourceItems"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "获取资源列表失败",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/resource/status/{id}/{statusValue}": {
+      "put": {
+        "summary": "修改资源状态。",
+        "description": "修改资源状态。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "资源ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "statusValue",
+            "in": "path",
+            "description": "状态值(0：禁用，1：启用)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "resource"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的资源信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/resource/{id}": {
+      "get": {
+        "summary": "获取单个资源信息。",
+        "description": "获取单个资源信息。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "资源ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "resource"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/resourceResult"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的资源信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "修改单个资源信息。",
+        "description": "修改单个资源信息。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "资源ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "resourceDto",
+            "in": "body",
+            "description": "资源信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/resourceDto"
+            }
+          }
+        ],
+        "tags": [
+          "resource"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的资源信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "删除单个资源。",
+        "description": "删除单个资源。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "资源ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "resource"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的资源信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/dictCategory": {
+      "post": {
+        "summary": "创建字典类别。",
+        "description": "创建字典类别。",
+        "parameters": [
+          {
+            "name": "dictCategoryDto",
+            "in": "body",
+            "description": "字典类别信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/dictCategoryDto"
+            }
+          }
+        ],
+        "tags": [
+          "dictCategory"
+        ],
+        "responses": {
+          "200": {
+            "description": "创建字典类别成功",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "创建字典类别失败",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/dictCategory/list": {
+      "get": {
+        "summary": "获取字典类别列表。",
+        "description": "获取字典类别列表。",
+        "parameters": [
+          {
+            "$ref": "#/parameters/pageSize"
+          },
+          {
+            "$ref": "#/parameters/pageNum"
+          },
+          {
+            "name": "dictCategoryDto",
+            "in": "body",
+            "description": "字典类别信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/dictCategoryDto"
+            }
+          }
+        ],
+        "tags": [
+          "dictCategory"
+        ],
+        "responses": {
+          "200": {
+            "description": "获取字典类别列表成功",
+            "schema": {
+              "$ref": "#/definitions/dictCategoryItems"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "获取字典类别列表失败",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/dictCategory/status/{id}/{statusValue}": {
+      "put": {
+        "summary": "修改字典类别状态。",
+        "description": "修改字典类别状态。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "字典类别ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "statusValue",
+            "in": "path",
+            "description": "状态值(0：禁用，1：启用)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "dictCategory"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的字典类别信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/dictCategory/{id}": {
+      "get": {
+        "summary": "获取单个字典类别信息。",
+        "description": "获取单个字典类别信息。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "字典类别ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "dictCategory"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/dictCategoryResult"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的字典类别信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "修改单个字典类别信息。",
+        "description": "修改单个字典类别信息。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "字典类别ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "dictCategoryDto",
+            "in": "body",
+            "description": "字典类别信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/dictCategoryDto"
+            }
+          }
+        ],
+        "tags": [
+          "dictCategory"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的字典类别信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "删除单个字典类别。",
+        "description": "删除单个字典类别。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "字典类别ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "dictCategory"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的字典类别信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/dict": {
+      "post": {
+        "summary": "创建数据字典。",
+        "description": "创建数据字典。",
+        "parameters": [
+          {
+            "name": "dictDto",
+            "in": "body",
+            "description": "数据字典信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/dictDto"
+            }
+          }
+        ],
+        "tags": [
+          "dict"
+        ],
+        "responses": {
+          "200": {
+            "description": "创建数据字典成功",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "创建数据字典失败",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/dict/list": {
+      "get": {
+        "summary": "获取数据字典列表。",
+        "description": "获取数据字典列表。",
+        "parameters": [
+          {
+            "name": "categoryId",
+            "in": "query",
+            "type": "string",
+            "description": "类别ID",
+            "required": true
+          }
+        ],
+        "tags": [
+          "dict"
+        ],
+        "responses": {
+          "200": {
+            "description": "获取数据字典列表成功",
+            "schema": {
+              "$ref": "#/definitions/dictItems"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "获取数据字典列表失败",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/dict/status/{id}/{statusValue}": {
+      "put": {
+        "summary": "修改数据字典状态。",
+        "description": "修改数据字典状态。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "数据字典ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "statusValue",
+            "in": "path",
+            "description": "状态值(0：禁用，1：启用)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "dict"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的数据字典信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/dict/{id}": {
+      "get": {
+        "summary": "获取单个数据字典信息。",
+        "description": "获取单个数据字典信息。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "数据字典ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "dict"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/dictResult"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的数据字典信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "修改单个数据字典信息。",
+        "description": "修改单个数据字典信息。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "数据字典ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "dictDto",
+            "in": "body",
+            "description": "数据字典信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/dictDto"
+            }
+          }
+        ],
+        "tags": [
+          "dict"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的数据字典信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "删除单个数据字典。",
+        "description": "删除单个数据字典。",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "数据字典ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "dict"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "404": {
+            "description": "没有查询到对应ID的数据字典信息",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "failed",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/log/list": {
+      "get": {
+        "summary": "获取日志列表。",
+        "description": "获取日志列表。",
+        "parameters": [
+          {
+            "$ref": "#/parameters/pageSize"
+          },
+          {
+            "$ref": "#/parameters/pageNum"
+          },
+          {
+            "name": "logDto",
+            "in": "body",
+            "description": "资源信息",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/logDto"
+            }
+          }
+        ],
+        "tags": [
+          "log"
+        ],
+        "responses": {
+          "200": {
+            "description": "获取日志列表成功",
+            "schema": {
+              "$ref": "#/definitions/logItems"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "获取日志列表失败",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    },
+    "/region/list": {
+      "get": {
+        "summary": "获取地区列表。",
+        "description": "获取地区列表。",
+        "parameters": [
+          {
+            "name": "parentId",
+            "in": "query",
+            "type": "string",
+            "description": "父级ID",
+            "required": true
+          }
+        ],
+        "tags": [
+          "region"
+        ],
+        "responses": {
+          "200": {
+            "description": "获取地区列表成功",
+            "schema": {
+              "$ref": "#/definitions/regionItems"
+            }
+          },
+          "500": {
+            "description": "调用接口异常",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          "default": {
+            "description": "获取地区列表失败",
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "deptDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "主键",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string",
+          "description": "机构名称"
+        },
+        "parentId": {
+          "type": "string",
+          "description": "父级ID"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "排序"
+        },
+        "remarks": {
+          "type": "string",
+          "description": "备注"
+        },
+        "status": {
+          "type": "string",
+          "description": "状态"
+        }
+      }
+    },
+    "deptResult": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int4",
+          "description": "返回代码"
+        },
+        "message": {
+          "type": "string",
+          "description": "返回信息"
+        },
+        "data": {
+          "$ref": "#/definitions/deptDto"
+        }
+      }
+    },
+    "deptItems": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "返回代码"
+        },
+        "message": {
+          "type": "string",
+          "description": "返回信息"
+        },
+        "data": {
+          "type": "array",
+          "description": "机构列表",
+          "items": {
+            "$ref": "#/definitions/deptDto"
+          }
+        }
+      }
+    },
+    "userDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "主键",
+          "readOnly": true
+        },
+        "deptId": {
+          "type": "string",
+          "description": "机构ID"
+        },
+        "username": {
+          "type": "string",
+          "description": "用户名"
+        },
+        "password": {
+          "type": "string",
+          "description": "密码"
+        },
+        "realName": {
+          "type": "string",
+          "description": "真实姓名"
+        },
+        "email": {
+          "type": "string",
+          "description": "电子邮箱"
+        },
+        "mobile": {
+          "type": "string",
+          "description": "手机号码"
+        },
+        "portrait": {
+          "type": "string",
+          "description": "头像"
+        },
+        "sex": {
+          "type": "string",
+          "description": "性别"
+        },
+        "remarks": {
+          "type": "string",
+          "description": "备注"
+        },
+        "status": {
+          "type": "string",
+          "description": "状态"
+        }
+      }
+    },
+    "userResult": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int4",
+          "description": "返回代码"
+        },
+        "message": {
+          "type": "string",
+          "description": "返回信息"
+        },
+        "data": {
+          "$ref": "#/definitions/userDto"
+        }
+      }
+    },
+    "userItems": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "返回代码"
+        },
+        "message": {
+          "type": "string",
+          "description": "返回信息"
+        },
+        "data": {
+          "allOf": [
+            {
+              "properties": {
+                "list": {
+                  "type": "array",
+                  "description": "用户列表",
+                  "items": {
+                    "$ref": "#/definitions/userDto"
+                  }
+                }
+              }
+            },
+            {
+              "$ref": "#/definitions/Paging"
+            }
+          ]
+        }
+      }
+    },
+    "roleDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "主键",
+          "readOnly": true
+        },
+        "code": {
+          "type": "string",
+          "description": "角色code"
+        },
+        "name": {
+          "type": "string",
+          "description": "角色名称"
+        },
+        "remarks": {
+          "type": "string",
+          "description": "备注"
+        },
+        "status": {
+          "type": "string",
+          "description": "状态"
+        }
+      }
+    },
+    "roleResult": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int4",
+          "description": "返回代码"
+        },
+        "message": {
+          "type": "string",
+          "description": "返回信息"
+        },
+        "data": {
+          "$ref": "#/definitions/roleDto"
+        }
+      }
+    },
+    "roleItems": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "返回代码"
+        },
+        "message": {
+          "type": "string",
+          "description": "返回信息"
+        },
+        "data": {
+          "allOf": [
+            {
+              "properties": {
+                "list": {
+                  "type": "array",
+                  "description": "角色列表",
+                  "items": {
+                    "$ref": "#/definitions/roleDto"
+                  }
+                }
+              }
+            },
+            {
+              "$ref": "#/definitions/Paging"
+            }
+          ]
+        }
+      }
+    },
+    "menuDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "主键",
+          "readOnly": true
+        },
+        "code": {
+          "type": "string",
+          "description": "菜单code"
+        },
+        "name": {
+          "type": "string",
+          "description": "菜单名称"
+        },
+        "parentId": {
+          "type": "string",
+          "description": "父级ID"
+        },
+        "href": {
+          "type": "string",
+          "description": "链接地址"
+        },
+        "icon": {
+          "type": "string",
+          "description": "图标"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "排序"
+        },
+        "remarks": {
+          "type": "string",
+          "description": "备注"
+        },
+        "status": {
+          "type": "string",
+          "description": "状态"
+        }
+      }
+    },
+    "menuResult": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int4",
+          "description": "返回代码"
+        },
+        "message": {
+          "type": "string",
+          "description": "返回信息"
+        },
+        "data": {
+          "$ref": "#/definitions/menuDto"
+        }
+      }
+    },
+    "menuItems": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "返回代码"
+        },
+        "message": {
+          "type": "string",
+          "description": "返回信息"
+        },
+        "data": {
+          "type": "array",
+          "description": "菜单列表",
+          "items": {
+            "$ref": "#/definitions/menuDto"
+          }
+        }
+      }
+    },
+    "resourceDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "主键",
+          "readOnly": true
+        },
+        "menuId": {
+          "type": "string",
+          "description": "菜单ID"
+        },
+        "code": {
+          "type": "string",
+          "description": "权限标志"
+        },
+        "name": {
+          "type": "string",
+          "description": "资源名称"
+        },
+        "method": {
+          "type": "string",
+          "description": "请求方法"
+        },
+        "uri": {
+          "type": "string",
+          "description": "资源路径"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int32",
+          "description": "排序"
+        },
+        "remarks": {
+          "type": "string",
+          "description": "备注"
+        },
+        "status": {
+          "type": "string",
+          "description": "状态"
+        }
+      }
+    },
+    "resourceResult": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int4",
+          "description": "返回代码"
+        },
+        "message": {
+          "type": "string",
+          "description": "返回信息"
+        },
+        "data": {
+          "$ref": "#/definitions/resourceDto"
+        }
+      }
+    },
+    "resourceItems": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "返回代码"
+        },
+        "message": {
+          "type": "string",
+          "description": "返回信息"
+        },
+        "data": {
+          "type": "array",
+          "description": "资源列表",
+          "items": {
+            "$ref": "#/definitions/resourceDto"
+          }
+        }
+      }
+    },
+    "dictCategoryDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "主键",
+          "readOnly": true
+        },
+        "code": {
+          "type": "string",
+          "description": "字典类别标识"
+        },
+        "name": {
+          "type": "string",
+          "description": "字典类别名称"
+        },
+        "remarks": {
+          "type": "string",
+          "description": "备注"
+        },
+        "status": {
+          "type": "string",
+          "description": "状态"
+        }
+      }
+    },
+    "dictCategoryResult": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int4",
+          "description": "返回代码"
+        },
+        "message": {
+          "type": "string",
+          "description": "返回信息"
+        },
+        "data": {
+          "$ref": "#/definitions/dictCategoryDto"
+        }
+      }
+    },
+    "dictCategoryItems": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "返回代码"
+        },
+        "message": {
+          "type": "string",
+          "description": "返回信息"
+        },
+        "data": {
+          "type": "array",
+          "description": "字典类别列表",
+          "items": {
+            "$ref": "#/definitions/dictCategoryDto"
+          }
+        }
+      }
+    },
+    "dictDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "主键",
+          "readOnly": true
+        },
+        "categoryId": {
+          "type": "string",
+          "description": "类别ID"
+        },
+        "label": {
+          "type": "string",
+          "description": "标签名"
+        },
+        "value": {
+          "type": "string",
+          "description": "数据值"
+        },
+        "sort": {
+          "type": "integer",
+          "format": "int4",
+          "description": "排序"
+        },
+        "remarks": {
+          "type": "string",
+          "description": "备注"
+        },
+        "status": {
+          "type": "string",
+          "description": "状态"
+        }
+      }
+    },
+    "dictResult": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int4",
+          "description": "返回代码"
+        },
+        "message": {
+          "type": "string",
+          "description": "返回信息"
+        },
+        "data": {
+          "$ref": "#/definitions/dictDto"
+        }
+      }
+    },
+    "dictItems": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "返回代码"
+        },
+        "message": {
+          "type": "string",
+          "description": "返回信息"
+        },
+        "data": {
+          "type": "array",
+          "description": "字典列表",
+          "items": {
+            "$ref": "#/definitions/dictDto"
+          }
+        }
+      }
+    },
+    "logDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "主键"
+        },
+        "menuName": {
+          "type": "string",
+          "description": "菜单名称"
+        },
+        "operate": {
+          "type": "string",
+          "description": "动作"
+        },
+        "uri": {
+          "type": "string",
+          "description": "资源路径"
+        },
+        "ip": {
+          "type": "string",
+          "description": "操作IP"
+        },
+        "createUserName": {
+          "type": "string",
+          "description": "操作人"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "dateTime",
+          "description": "操作时间"
+        }
+      }
+    },
+    "logItems": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "返回代码"
+        },
+        "message": {
+          "type": "string",
+          "description": "返回信息"
+        },
+        "data": {
+          "allOf": [
+            {
+              "properties": {
+                "list": {
+                  "type": "array",
+                  "description": "角色列表",
+                  "items": {
+                    "$ref": "#/definitions/logDto"
+                  }
+                }
+              }
+            },
+            {
+              "$ref": "#/definitions/Paging"
+            }
+          ]
+        }
+      }
+    },
+    "regionDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "主键",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string",
+          "description": "地区名称"
+        },
+        "shortname": {
+          "type": "string",
+          "description": "地区简称"
+        }
+      }
+    },
+    "regionItems": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "返回代码"
+        },
+        "message": {
+          "type": "string",
+          "description": "返回信息"
+        },
+        "data": {
+          "type": "array",
+          "description": "地区列表",
+          "items": {
+            "$ref": "#/definitions/regionDto"
+          }
+        }
+      }
+    },
+    "result": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "返回代码"
+        },
+        "message": {
+          "type": "string",
+          "description": "返回信息"
+        }
+      }
+    },
+    "Paging": {
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总记录数"
+        },
+        "pages": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总页数"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页显示记录数"
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页码数"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "pageSize": {
+      "name": "pageSize",
+      "in": "query",
+      "description": "每页显示记录数",
+      "type": "integer",
+      "default": 0
+    },
+    "pageNum": {
+      "name": "pageNum",
+      "in": "query",
+      "description": "页码数",
+      "type": "integer",
+      "default": 10
+    }
+  },
+  "tags": [
+    {
+      "name": "dept",
+      "description": "机构"
+    },
+    {
+      "name": "user",
+      "description": "用户"
+    },
+    {
+      "name": "role",
+      "description": "角色"
+    },
+    {
+      "name": "menu",
+      "description": "菜单"
+    },
+    {
+      "name": "resource",
+      "description": "资源"
+    },
+    {
+      "name": "dictCategory",
+      "description": "字典类别"
+    },
+    {
+      "name": "dict",
+      "description": "数据字典"
+    },
+    {
+      "name": "log",
+      "description": "系统日志"
+    },
+    {
+      "name": "region",
+      "description": "地区（省市区）"
+    }
+  ]
+}
